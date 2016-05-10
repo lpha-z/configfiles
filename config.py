@@ -10,6 +10,7 @@ from keyhac import *
 #DvorakJを起動してからKeyhacを起動する
 
 def configure(keymap):
+
     #モディファイアキーの追加
     #無変換
     keymap.defineModifier( 29, "LUser0" )
@@ -19,9 +20,13 @@ def configure(keymap):
     #キーマップの追加(グローバル)
     keymap_global = keymap.defineWindowKeymap()
 
+    keymap_global[ "C-S-Z"   ] = keymap.command_ClipboardList
+    keymap_global[ "C-S-X"   ] = keymap.command_ClipboardRotate   # Move the most recent history to tail
+
+
     #無変換、変換、カタカナひらがな
     keymap_global[ "O-(29)" ] = "Back"
-    keymap_global[ "O-(28)" ] = "Delete"
+    keymap_global[ "O-(28)" ] = "Tab"
     keymap_global[ "(242)"  ] = "Enter"
 
     #無変換→変換、変換→無変換
@@ -52,7 +57,7 @@ def configure(keymap):
     keymap_global[ "User0-P" ] = "Caret"
 
     keymap_global[ "User0-M"      ] = "Left"
-    keymap_global[ "User0-Colon"  ] = "Down"
+    keymap_global[ "User0-Comma"  ] = "Down"
     keymap_global[ "User0-Period" ] = "Up"
-    keymap_global[ "User0-Slash"  ] = "Left"  
+    keymap_global[ "User0-Slash"  ] = "Right"  
 
